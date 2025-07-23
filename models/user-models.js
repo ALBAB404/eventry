@@ -5,26 +5,22 @@ const schema = new Schema({
         type: String,
         required: true,
     },
-    details: {
+    email: {
         type: String,
         required: true,
     },
-    imageUrl: {
+    password: {
         type: String,
         required: true,
     },
-    location: {
+    phone: {
         type: String,
         required: true,
     },
-    interested_ids: {
-        type: Array,
-        default: [],
-    },
-    going_ids: {
-        type: Array,
-        default: [],
+    bio: {
+        type: String,
+        required: true,
     },
 })
 
-export const eventModel = mongoose.models.events ?? mongoose.model("events", schema);
+export const userModel = mongoose.models.users ||  mongoose.model("users", schema);

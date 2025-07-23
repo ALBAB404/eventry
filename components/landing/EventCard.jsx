@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import ActionButtons from "../ActionButtons";
 
 const EventCard = ({ event }) => {
   return (
@@ -18,20 +19,13 @@ const EventCard = ({ event }) => {
         <p className="text-[#9C9C9C] text-sm mt-1">
           {event.location}
         </p>
-        {/* <div className="text-[#737373] text-sm mt-1">
+        <div className="text-[#737373] text-sm mt-1">
           <span>{event.interested_ids.length} Interested</span>
           <span>|</span>
           <span>{event.going_ids.length} Going</span>
-        </div> */}
-        {/* Buttons */}
-        <div className="w-full flex gap-4 mt-4">
-          {/* bg-indigo-600 indicating Active */}
-          <button className="w-full bg-indigo-600 hover:bg-indigo-800">
-            Interested
-          </button>
-          {/* bg-green-600 indicating Active */}
-          <Link href={`/payment`} className="w-full">Going</Link>
         </div>
+        {/* Buttons */}
+        <ActionButtons fromDetails={false} eventId={event.id} interestedUserIds={event.interested_ids} goingUserIds={event.going_ids} />
       </div>
     </div>
   );
