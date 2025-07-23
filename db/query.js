@@ -3,8 +3,14 @@ import { userModel } from "@/models/user-models";
 import { replaceMongoIdInArray, replaceMongoIdInObject } from "@/utils/data-util";
 import mongoose from "mongoose"; // Add this import
 
-export async function getEvents() {
-    const allEvents = await eventModel.find().lean();
+export async function getEvents(query) {
+    let allEvents = [];
+    if (query) {
+        const regex = new RegExp(query, "i");
+        allEvents = await eventModel.find({ name: { $regex: regex } }).lean();
+    } else {
+        allEvents = await eventModel.find().lean();
+    }
     return replaceMongoIdInArray(allEvents);
 }
 
